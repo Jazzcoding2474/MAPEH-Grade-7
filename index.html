@@ -54,11 +54,101 @@ li a:hover:not(.active) {
 a{
 color:white
 }
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  left: 42%;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: black;
+  font-size: 24px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: White;
+  padding: 2px 16px;
+  color: white;
+  width:45%;
+
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 15.24%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
 </style>
 <body>
-
-
-
 <!-- Sidebar -->
 <ul>
   <li><a class="active" href="https://jazzcoding2474.github.io/MAPEH-Grade-7/">MAPEH Page</a></li>
@@ -71,12 +161,75 @@ color:white
 <div class="w3-main" style="margin-left:260px">
 
 
+
+
+
       <h1 class="w3-text-teal">MAPEH</h1>
-<p>Put something here later when we got stuff ready.</p>
+<p style=" float: right; font-size: 17px;">Here you can see a preview of my works. Use the arrows on the right or left to see the other images.</p>
+    <p style="float:right; font-size:17px; padding-top:10px; padding-right:265px;">Use the navigation bar on the left of your screen to see my work!</p>
+<div class="caption-container">
+    <p style="color:black; font-size:25px;" id="caption"></p>
+  </div>
+<div class="container">
+  <div class="mySlides">
+    <div class="numbertext">1 / 3</div>
+    <img class="demo cursor" src="https://i.pinimg.com/originals/18/b6/16/18b61645d03e109173fd787737f74a5c.jpg" alt="Music" style="width:45%; height:720px;">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 3</div>
+    <img class="demo cursor" src="https://i.pinimg.com/originals/15/1c/ba/151cbabf05d122b285629d8a27b47c7d.jpg" alt="Art" style="width:45%; height:720px;">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 3</div>
+    <img class="demo cursor" src="https://i.imgur.com/tynXGBM.gif" alt="PE" style="width:45%; height:720px;">
+  </div>
+
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+
+
+
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
 
 
 </div>
 </body>
 </html>
+
 
 
